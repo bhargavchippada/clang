@@ -117,6 +117,10 @@ def DynamicTypePropagation : Checker<"DynamicTypePropagation">,
 
 let ParentPackage = CoreAlpha in {
 
+def IntByIntDivChecker : Checker<"IntByIntDiv">,
+  HelpText<"Check for division by zero Okay">,
+  DescFile<"IntByIntDivChecker.cpp">;
+
 def BoolAssignmentChecker : Checker<"BoolAssignment">,
   HelpText<"Warn about assigning non-{0,1} values to Boolean variables">,
   DescFile<"BoolAssignmentChecker.cpp">;

@@ -24,6 +24,8 @@
 #==============================================================================#
 cscope.files
 cscope.out
+cscope.in.out
+cscope.po.out
 
 #==============================================================================#
 # Directories to ignore (do not add trailing '/'s, they skip symlinks).

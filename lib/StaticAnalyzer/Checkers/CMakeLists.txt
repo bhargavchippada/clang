@@ -8,6 +8,8 @@ set(LLVM_LINK_COMPONENTS
   )
 
 add_clang_library(clangStaticAnalyzerCheckers
+  IntByIntDivChecker.cpp
+  
   AllocationDiagnostics.cpp
   AnalyzerStatsChecker.cpp
   ArrayBoundChecker.cpp
