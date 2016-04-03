@@ -117,8 +117,16 @@ def DynamicTypePropagation : Checker<"DynamicTypePropagation">,
 
 let ParentPackage = CoreAlpha in {
 
+def WarnFunctionsUseChecker : Checker<"WarnFunctionsUse">,
+  HelpText<"Warn about usage of particular functions">,
+  DescFile<"WarnFunctionsUseChecker.cpp">;
+
+def CaretForPowerChecker : Checker<"CaretForPower">,
+  HelpText<"Warn beginners who think ^ computes power instead of xor">,
+  DescFile<"CaretForPowerChecker.cpp">;
+
 def IntByIntDivChecker : Checker<"IntByIntDiv">,
-  HelpText<"Check for division by zero Okay">,
+  HelpText<"Warn about Int by Int division">,
   DescFile<"IntByIntDivChecker.cpp">;
 
 def BoolAssignmentChecker : Checker<"BoolAssignment">,
