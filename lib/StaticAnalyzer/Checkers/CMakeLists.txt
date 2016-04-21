@@ -8,6 +8,7 @@ set(LLVM_LINK_COMPONENTS
   )
 
 add_clang_library(clangStaticAnalyzerCheckers
+  DisableIterationChecker.cpp
   WarnFunctionsUseChecker.cpp
   CaretForPowerChecker.cpp
   IntByIntDivChecker.cpp

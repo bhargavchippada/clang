@@ -117,6 +117,10 @@ def DynamicTypePropagation : Checker<"DynamicTypePropagation">,
 
 let ParentPackage = CoreAlpha in {
 
+def DisableIterationChecker : Checker<"DisableIteration">,
+  HelpText<"Warn about usage of iteration statements: for, while, do">,
+  DescFile<"DisableIterationChecker.cpp">;
+
 def WarnFunctionsUseChecker : Checker<"WarnFunctionsUse">,
   HelpText<"Warn about usage of particular functions">,
   DescFile<"WarnFunctionsUseChecker.cpp">;
