@@ -22,6 +22,9 @@
 #include <string>
 #include <vector>
 
+#include "configuration.h"
+#include <fstream>
+
 using namespace clang;
 using namespace ento;
 
@@ -39,12 +42,25 @@ class WarnFunctionsUseChecker : public Checker<check::PreCall> {
 }  // end anonymous namespace
 
 WarnFunctionsUseChecker::WarnFunctionsUseChecker() {
-  // Retrieve what functions to be warned
-  char *env_p = std::getenv("PRUTOR_WARN_FUNCS");
-  char *func = strtok(env_p, " ;,-");
-  while (func) {
-    warnFunctions.push_back(func);
-    func = strtok(NULL, " ;,-");
+  // Get config file location
+  char *env_p = std::getenv("PRUTOR_CONFIG_LOC");
+
+  configuration::data myconfigdata;
+  std::ifstream f(env_p);
+  if (f != NULL) {
+    f >> myconfigdata;
+    f.close();
+
+    // Retrieve what functions to be warned
+    std::string str = myconfigdata["PRUTOR_WARN_FUNCS"];
+    char *funcs = new char[str.size() + 1];
+    std::copy(str.begin(), str.end(), funcs);
+    funcs[str.size()] = '\0';
+    char *func = strtok(funcs, " ;,-");
+    while (func) {
+      warnFunctions.push_back(func);
+      func = strtok(NULL, " ;,-");
+    }
   }
 
   // Initialize the bug types.
