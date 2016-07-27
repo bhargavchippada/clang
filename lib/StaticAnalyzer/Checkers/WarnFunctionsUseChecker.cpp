@@ -88,7 +88,7 @@ void WarnFunctionsUseChecker::checkPreCall(const CallEvent &Call,
   for (unsigned int i = 0; i < warnFunctions.size(); i++) {
     if (Call.isGlobalCFunction(warnFunctions[i])) {
       std::string msg(warnFunctions[i]);
-      msg = "Do not use '" + msg + "' builtin function, declare it yourself";
+      msg = "Do not use '" + msg + "' builtin function, define it yourself";
       reportBug(msg.c_str(), C);
       return;
     }
